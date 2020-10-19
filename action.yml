@@ -1,11 +1,10 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'DAppNodeSDK publish package'
+description: 'Publish a DAppNode package with its SDK'
+author: 'DAppNode Association'
 inputs:
-  milliseconds: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  developer_address:
+    required: false
+    description: 'Ethereum address for the mantainer of this package APM repo'
 runs:
   using: 'node12'
   main: 'dist/index.js'

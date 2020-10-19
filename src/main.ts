@@ -1,17 +1,27 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import {dappnodesdk} from '@dappnode/dappnodesdk'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
+    const developer_address: string = core.getInput('developer_address')
+    if (developer_address)
+      core.info(`Set developer_address: ${developer_address}`)
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    const {releaseMultiHash} = await dappnodesdk.publish({
+      type: 'patch',
+      dir: './',
+      dappnode_team_preset: true,
+      eth_provider: 'remote',
+      content_provider: 'remote',
+      timeout: '60min',
+      upload_to: 'ipfs',
+      developer_address
+    })
 
-    core.setOutput('time', new Date().toTimeString())
+    core.info(`Release multihash: ${releaseMultiHash}`)
+    core.setOutput('releaseMultiHash', releaseMultiHash)
   } catch (error) {
+    core.error(error.stack)
     core.setFailed(error.message)
   }
 }
