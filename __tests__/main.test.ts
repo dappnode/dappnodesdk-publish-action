@@ -19,10 +19,10 @@ test('test runs', async () => {
   })
   console.log(`Initialized test DNP: ${manifest.name} ${manifest.version}`)
 
-  process.env['DEVELOPER_ADDRESS'] =
+  process.env['INPUT_DEVELOPER_ADDRESS'] =
     '0xf35960302a07022aba880dffaec2fdd64d5bf1c1'
-  process.env['DAPPNODE_TEAM_PRESET'] = 'false'
-  process.env['RELEASE_DIR'] = testDnpDirectory
+  process.env['INPUT_DAPPNODE_TEAM_PRESET'] = 'false'
+  process.env['INPUT_DIR'] = testDnpDirectory
 
   const ip = path.join(__dirname, '..', 'lib', 'main.js')
   const options: cp.ExecSyncOptions = {
