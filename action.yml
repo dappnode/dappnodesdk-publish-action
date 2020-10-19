@@ -1,11 +1,15 @@
-name: 'DAppNodeSDK publish package'
-description: 'Publish a DAppNode package with its SDK'
-author: 'DAppNode Association'
+name: "DAppNodeSDK publish package"
+description: "Publish a DAppNode package with its SDK"
+author: "DAppNode Association"
+branding:
+  icon: "upload"
+  color: "green"
+
 inputs:
   dir:
     required: false
-    description: 'Change the base directory'
-    default: './'
+    description: "Change the base directory"
+    default: "./"
   eth_provider:
     required: false
     description: 'Specify an eth provider: "dappnode" (default), "infura", "localhost:5002"'
@@ -20,11 +24,33 @@ inputs:
     default: 60min
   developer_address:
     required: false
-    description: 'Ethereum address for the mantainer of this package APM repo'
+    description: "Ethereum address for the mantainer of this package APM repo"
   dappnode_team_preset:
     required: false
-    description: 'Specific set of options used for internal DAppNode releases. Caution: options may change without notice.'
+    description: "Specific set of options used for internal DAppNode releases. Caution: options may change without notice."
     default: false
+
+outputs:
+  random-number:
+    description: "Release hash"
+    value: ${{ steps.random-number-generator.outputs.random-id }}
+
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: "composite"
+  steps:
+    - run: echo Hello ${{ inputs.who-to-greet }}.
+      shell: bash
+    - id: random-number-generator
+      run: echo "::set-output name=random-id::$(echo $RANDOM)"
+      shell: bash
+    - run: ${{ github.action_path }}/goodbye.sh
+      shell: bash
+
+    - name: Setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: "12"
+    - name: Publish
+      run: npx @dappnode/dappnodesdk publish patch --dappnode_team_preset
+      env:
+        DEVELOPER_ADDRESS: "0xf35960302a07022aba880dffaec2fdd64d5bf1c1"

@@ -1,10 +1,10 @@
-name: 'build-test'
+name: "build-test"
 on: # rebuild any PRs and main branch changes
   pull_request:
   push:
     branches:
       - main
-      - 'releases/*'
+      - "releases/*"
 
 jobs:
   build: # make sure build/ci work properly
@@ -17,9 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Create test mock package
+        run: npx @dappnode/dappnodesdk init --yes --force
       - uses: ./
         with:
-          developer_address: '0xf35960302a07022aba880dffaec2fdd64d5bf1c1'
+          developer_address: "0xf35960302a07022aba880dffaec2fdd64d5bf1c1"
           dappnode_team_preset: false
         env:
           TESTING_ONLY_INIT_FIRST: true
