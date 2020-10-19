@@ -1,8 +1,10 @@
 # DAppNode testing artifacts
+test-dnp/
 build/
 avatar-default.png
 dappnode_package.json
 docker-compose.yml
+releases.json
 
 # Intermediate tsc build files
 lib/
