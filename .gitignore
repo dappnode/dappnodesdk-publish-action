@@ -1,3 +1,12 @@
+# DAppNode testing artifacts
+build/
+avatar-default.png
+dappnode_package.json
+docker-compose.yml
+
+# Intermediate tsc build files
+lib/
+
 # Dependency directory
 node_modules
 
@@ -96,4 +105,5 @@ Thumbs.db
 
 # Ignore built ts files
 __tests__/runner/*
-lib/**/*
+lib/**/*# DAppNodeSDK release directories
+build_*

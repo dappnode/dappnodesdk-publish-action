@@ -272,10 +272,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@dappnode/dappnodesdk@^0.2.28":
-  version "0.2.28"
-  resolved "https://registry.yarnpkg.com/@dappnode/dappnodesdk/-/dappnodesdk-0.2.28.tgz#dc5bd73ab7472af8e0caf07adc277f988f378a64"
-  integrity sha512-kdiEApQFBkqt1Rtya7LIJVyetbvA4Jo0dum2+Q4VX5nJFZ2W1BgfMQmtRQIXiSAjj2bfPU5xz255u7SUmyUWSw==
+"@dappnode/dappnodesdk@^0.2.29":
+  version "0.2.29"
+  resolved "https://registry.yarnpkg.com/@dappnode/dappnodesdk/-/dappnodesdk-0.2.29.tgz#bc3061362d7d15c273dcd31cd03e341b19b166ee"
+  integrity sha512-3WaHzBj2g1Ii4EaGxigXOnMdcgJ++/OVUN0tKfuV2ZK58etO/uFUeDvFkVoTFRUJS/DtzGgDRZuV3VIcypB6Xw==
   dependencies:
     "@octokit/rest" "^16.27.3"
     "@pinata/sdk" "^1.1.11"
@@ -2677,7 +2677,7 @@ eslint-plugin-jest@^23.20.0:
   dependencies:
     "@typescript-eslint/experimental-utils" "^2.5.0"
 
-eslint-plugin-prettier@>=3.1.2:
+eslint-plugin-prettier@>=3.1.2, eslint-plugin-prettier@^3.1.4:
   version "3.1.4"
   resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.1.4.tgz#168ab43154e2ea57db992a2cd097c828171f75c2"
   integrity sha512-jZDa8z76klRqo+TdGDTFJSavwbnWK2ZpqGKNZ+VvweMW516pDUMmQ2koXvxEE4JhzNvTv+radye/bWGBmA6jmg==
